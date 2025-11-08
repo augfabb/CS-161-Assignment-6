@@ -33,6 +33,7 @@
 
 // ------------- CODE -------------
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -84,29 +85,51 @@ int main(int argc, char* argv[]) {
   while(!validChoice) {
 
     cin >> choice;
+   
     if (choice == 'c'|| choice == 'C') {
+      validChoice = true;
+      
+      cout << "How many would you like?\n";
+      cout << ">>";
+      cin >> count;
+    
+    }
+    else if (choice == 'T' || choice == 't') {
+      validChoice = true;
+
+      cout << "How many would you like?\n";
+      cout << ">>";
+     
+    }
+    else if (choice == 'Q'|| choice == 'q') {
+      validChoice = true;
+      
       cout << "How many would you like?\n";
       cout << ">>";
       cin >> count;
 
-      
-
-
-    }
-    else if (choice == 'T' || choice == 't') {
-      cout << "How many would you like?\n";
-      cout << ">>";
-    }
-    else if (choice == 'Q'|| choice == 'q') {
-      cout << "How many would you like?\n";
-      cout << ">>";
     }
     else {
-      cout << "Invalid Option! Please choose a valid option!";
+      cout << "Invalid Option! Please choose a valid option!" << endl;
       continue;
     }
 
   }
+  
+  cost = count * 0.25;
+  userBalance = userBalance - cost;
+
+  cout << fixed << setprecision(2);
+  cout << "Your total: $" << cost << endl;
+  cout << "Your balance: $" << userBalance << endl;
+
+  if (userBalance < 0) {
+    cout << "Not enough change!! Please enter more" << endl;
+  }
+  
+
+  cout <<"\nThanks for using my vending machine!!" << endl;
+
   
 
 
