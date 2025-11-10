@@ -1,7 +1,7 @@
 // ------------- FILE HEADER -------------
-// Author ✅: 
-// Assignment ✅:
-// Date ✅:
+// Author ✅: August Fabbri
+// Assignment ✅: 6
+// Date ✅: 11/8/2025
 // Citations: 
 
 
@@ -46,88 +46,92 @@ int main(int argc, char* argv[]) {
   char choice;
   int count = 0;
   double cost = 0;
+  bool restart = true;
+  double balanceRemain = 0;
 
   cout << "Welcome to my Coffee & Tea vending program!!";
 
-  //money input
-  do {
-    cout << "Enter coins - 5, 10, or 25 only: ";
-    cin >> userInput;
-    validInput = (userInput == 5 || userInput == 10 || userInput == 25);
-    if (!validInput) {
-      continue;
-    }
-    if(userInput == 5) {
-      userBalance = userBalance + 0.05;
-    }
-    else if(userInput == 10) {
-      userBalance = userBalance + 0.10;
-    }
-    else if(userInput == 25) {
-      userBalance = userBalance + 0.25;
-    }
+  while (restart) {
+    //money input
+    do {
+      cout << "Enter coins - 5, 10, or 25 only: ";
+      cin >> userInput;
+      validInput = (userInput == 5 || userInput == 10 || userInput == 25);
+      if (!validInput) {
+        continue;
+      }
+      if(userInput == 5) {
+        userBalance = userBalance + 0.05;
+      }
+      else if(userInput == 10) {
+        userBalance = userBalance + 0.10;
+      }
+      else if(userInput == 25) {
+        userBalance = userBalance + 0.25;
+      }
 
-    
-  } while (userInput != 0);
-
-  cout << "Your balance is " << userBalance << endl;
-
-  //Menu Display
-  
-  cout << "Please pick an option ($0.25 each): \n";
-  cout << "    C/c: Coffee\n";
-  cout << "    T/t: Tea\n";
-  cout << "    Q/q: Quit\n";
-  cout << ">> ";
-  
-  bool validChoice = false;
-
-  while(!validChoice) {
-
-    cin >> choice;
-   
-    if (choice == 'c'|| choice == 'C') {
-      validChoice = true;
       
-      cout << "How many would you like?\n";
-      cout << ">>";
-      cin >> count;
+    } while (userInput != 0);
+
+    cout << "Your balance is " << userBalance << endl;
+
+    //Menu Display
     
-    }
-    else if (choice == 'T' || choice == 't') {
-      validChoice = true;
+    cout << "Please pick an option ($0.25 each): \n";
+    cout << "    C/c: Coffee\n";
+    cout << "    T/t: Tea\n";
+    cout << "    Q/q: Quit\n";
+    cout << ">> ";
+    
+    bool validChoice = false;
 
-      cout << "How many would you like?\n";
-      cout << ">>";
-     
-    }
-    else if (choice == 'Q'|| choice == 'q') {
-      validChoice = true;
+    while(!validChoice) {
+
+      cin >> choice;
+    
+      if (choice == 'c'|| choice == 'C') {
+        validChoice = true;
+        
+        cout << "How many would you like?\n";
+        cout << ">>";
+        cin >> count;
       
-      cout << "How many would you like?\n";
-      cout << ">>";
-      cin >> count;
+      }
+      else if (choice == 'T' || choice == 't') {
+        validChoice = true;
+
+        cout << "How many would you like?\n";
+        cout << ">>";
+        cin >> count;
+      
+      }
+      else if (choice == 'Q'|| choice == 'q') {
+        validChoice = true;
+        
+        cout << "Thanks for using my program!";
+        exit(0);
+
+      }
+      else {
+        cout << "Invalid Option! Please choose a valid option!" << endl;
+        continue;
+      }
 
     }
-    else {
-      cout << "Invalid Option! Please choose a valid option!" << endl;
-      continue;
+    
+    cost = count * 0.25;
+    balanceRemain = userBalance - cost;
+
+    cout << fixed << setprecision(2);
+    cout << "Your total: $" << cost << endl;
+    cout << "Your balance: $" << balanceRemain << endl;
+
+    if (balanceRemain < 0) {
+      cout << "Not enough change!! Please enter more" << endl;
+      restart = true;
     }
-
+    
   }
-  
-  cost = count * 0.25;
-  userBalance = userBalance - cost;
-
-  cout << fixed << setprecision(2);
-  cout << "Your total: $" << cost << endl;
-  cout << "Your balance: $" << userBalance << endl;
-
-  if (userBalance < 0) {
-    cout << "Not enough change!! Please enter more" << endl;
-  }
-  
-
   cout <<"\nThanks for using my vending machine!!" << endl;
 
   
