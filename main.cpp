@@ -271,6 +271,8 @@ How many would you like?
 Your total: $0.50
 Your balance: $0.75
 
+Thanks for using my vending machine!!
+
 Welcome to my Coffee & Tea vending program!!Enter coins - 5, 10, or 25 only: 10
 Enter coins - 5, 10, or 25 only: 0
 Your balance is 0.1
@@ -299,6 +301,5 @@ Your balance: $0.10
 
 Thanks for using my vending machine!!
 
-Thanks for using my vending machine!!
 
 */
