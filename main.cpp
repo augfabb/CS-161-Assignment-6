@@ -6,15 +6,15 @@
 
 
 // ------------- ZYBOOKS SCORES -------------
-// Chapter ✅: 
-// Participation ✅: 
-// Challenge ✅:
-// Labs ✅:
+// Chapter ✅: 6
+// Participation ✅: 70
+// Challenge ✅:50
+// Labs ✅:100
 
 
 // ------------- DISCORD POSTS -------------
 // https://discord.com/invite/URYKKf8YHm
-// Count ✅:
+// Count ✅:1
 // Links (Optional): 
 
 
@@ -130,14 +130,14 @@ int main(int argc, char* argv[]) {
       cout << "Not enough change!! Please enter more" << endl;
       restart = true;
     }
+    else {
+      restart = false;
+    }
     
   }
   cout <<"\nThanks for using my vending machine!!" << endl;
 
   
-
-
-
 
 
   return 0;
@@ -157,10 +157,16 @@ Program Description:
 
 Design:
 A. INPUT
-Define the input variables including name data type. 
+
+int userInput;
+char choice;
 
 B. OUTPUT
-Define the output variables including data types. 
+
+double cost = 0;
+double balanceRemain = 0;
+
+
 
 C. CALCULATIONS
 Describe calculations used by algorithms in step D.  
@@ -168,13 +174,131 @@ List all formulas.
 If there are no calculations needed, state there are no calculations.
 
 D. LOGIC and ALGORITHMS
-Design the logic of your program using pseudocode or flowcharts. 
-Use conditionals, loops, functions or array constructs.
-List the steps in transforming inputs into outputs. 
-https://github.com/Glen-Sasek-PCC-Instructor/2025-06-22/blob/main/Pseudocode-Reference.txt
+ PRINT "Welcome to my Coffee & Tea vending program!!"
+
+  WHILE restart IS TRUE DO
+
+      //Accept coin input
+      DO
+          PRINT "Enter coins - 5, 10, or 25 only (enter 0 to stop): "
+          READ userInput
+
+          SET validInput = (userInput == 5 OR userInput == 10 OR userInput == 25)
+
+          IF NOT validInput AND userInput != 0 THEN
+              CONTINUE  // ask again
+          ENDIF
+
+          IF userInput == 5 THEN
+              userBalance = userBalance + 0.05
+          ELSE IF userInput == 10 THEN
+              userBalance = userBalance + 0.10
+          ELSE IF userInput == 25 THEN
+              userBalance = userBalance + 0.25
+          ENDIF
+
+      WHILE userInput != 0
+
+      PRINT "Your balance is ", userBalance
+
+      // Step 2: Display menu
+      PRINT "Please pick an option ($0.25 each):"
+      PRINT "   C/c: Coffee"
+      PRINT "   T/t: Tea"
+      PRINT "   Q/q: Quit"
+
+      SET validChoice = FALSE
+
+      WHILE NOT validChoice DO
+          READ choice
+
+          IF choice IS 'C' OR 'c' THEN
+              validChoice = TRUE
+              PRINT "How many would you like?"
+              READ count
+
+          ELSE IF choice IS 'T' OR 't' THEN
+              validChoice = TRUE
+              PRINT "How many would you like?"
+              READ count
+
+          ELSE IF choice IS 'Q' OR 'q' THEN
+              PRINT "Thanks for using my program!"
+              EXIT PROGRAM
+
+          ELSE
+              PRINT "Invalid Option! Please choose a valid option!"
+          ENDIF
+      ENDWHILE
+
+      // Step 3: Calculate total cost and remaining balance
+      cost = count * 0.25
+      balanceRemain = userBalance - cost
+
+      PRINT "Your total: $", cost
+      PRINT "Your balance: $", balanceRemain
+
+      IF balanceRemain < 0 THEN
+          PRINT "Not enough change!! Please enter more"
+          restart = TRUE
+      ELSE
+          restart = FALSE
+      ENDIF
+
+  ENDWHILE
+
+  PRINT "Thanks for using my vending machine!!"
+
 
 
 SAMPLE RUNS
 Copy from assignment document.
+
+Welcome to my Coffee & Tea vending program!!Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 0
+Your balance is 1.25
+Please pick an option ($0.25 each): 
+    C/c: Coffee
+    T/t: Tea
+    Q/q: Quit
+>> c
+How many would you like?
+>>2
+Your total: $0.50
+Your balance: $0.75
+
+Welcome to my Coffee & Tea vending program!!Enter coins - 5, 10, or 25 only: 10
+Enter coins - 5, 10, or 25 only: 0
+Your balance is 0.1
+Please pick an option ($0.25 each): 
+    C/c: Coffee
+    T/t: Tea
+    Q/q: Quit
+>> c
+How many would you like?
+>>1
+Your total: $0.25
+Your balance: $-0.15
+Not enough change!! Please enter more
+Enter coins - 5, 10, or 25 only: 25
+Enter coins - 5, 10, or 25 only: 0
+Your balance is 0.35
+Please pick an option ($0.25 each): 
+    C/c: Coffee
+    T/t: Tea
+    Q/q: Quit
+>> c
+How many would you like?
+>>1
+Your total: $0.25
+Your balance: $0.10
+
+Thanks for using my vending machine!!
+
+Thanks for using my vending machine!!
 
 */
